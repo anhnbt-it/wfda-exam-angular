@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { error } from '@angular/compiler/src/util';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/book';
 import { BookService } from 'src/app/book.service';
@@ -11,26 +12,22 @@ import { BookService } from 'src/app/book.service';
 })
 export class BookDetailComponent implements OnInit {
 
-  book!: Book;
+  @Input() book: Book | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
     private bookService: BookService
   ) {
   }
 
   ngOnInit(): void {
-    // First get the product id from the current route.
+    this.getBook();
+  }
+
+  getBook(): void {
     const routeParams = this.route.snapshot.paramMap;
     const bookIdFromRoute = Number(routeParams.get('id'));
-
-    // Find the product that correspond with the id provided in route.
-    // http://localhost:3000/books/1
-    this.http.get<Book>('http://localhost:3000/books/' + bookIdFromRoute).subscribe((data: Book) => {
-      this.book = data;
-      console.log(this.book);
-    });
+    this.bookService.getBook(bookIdFromRoute).subscribe(book => this.book = book);
   }
 
 }
