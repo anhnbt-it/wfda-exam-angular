@@ -30,7 +30,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions class="example-button-row">
-            <button mat-raised-button color="primary" type="submit">Cập nhật</button>
+            <button [disabled]="bookForm.invalid" mat-raised-button color="primary" type="submit">Cập nhật</button>
             <a mat-raised-button routerLink="/">Thoát</a>
         </mat-card-actions>
     </mat-card>
