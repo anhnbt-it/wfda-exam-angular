@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,6 +30,7 @@ import { BookService } from './book.service';
 import { BookEditComponent } from './books/book-edit/book-edit.component';
 import { BookDeleteComponent } from './books/book-delete/book-delete.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { BookDetailComponent } from './books/book-detail/book-detail.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
