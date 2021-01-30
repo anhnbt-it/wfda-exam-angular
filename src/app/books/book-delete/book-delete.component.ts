@@ -34,6 +34,7 @@ export class BookDeleteComponent implements OnInit {
 
   onDelete(): void {
     if (this.book != undefined && this.book.id != undefined) {
+      // this.books.filter(b => b !== this.book);
       this.bookService.deleteBook(this.book.id).subscribe(() => this.goBack());
     }
   }
