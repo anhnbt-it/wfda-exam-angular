@@ -1,8 +1,10 @@
-<mat-card>
+<mat-card class="container">
     <mat-card-header>
-        <mat-card-title>Chi tiet sach</mat-card-title>
-        <mat-card-subtitle><a mat-raised-button color="primary" routerLink="/">Xem danh sach</a></mat-card-subtitle>
+        <mat-card-title>Chi tiết sách</mat-card-title>
     </mat-card-header>
+    <mat-card-actions>
+        <a mat-raised-button routerLink="/"><span class="material-icons">arrow_back_ios</span> Xem danh sách</a>
+    </mat-card-actions>
     <mat-card-content *ngIf="book !== undefined">
         <p>ID: {{ book.id }}</p>
         <p>Title: {{ book.title }}</p>

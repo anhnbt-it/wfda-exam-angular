@@ -1,4 +1,4 @@
-<mat-card *ngIf="book !== undefined">
+<mat-card class="container" *ngIf="book !== undefined">
     <mat-card-header>
         <mat-card-title>Xóa sách</mat-card-title>
     </mat-card-header>
@@ -10,6 +10,6 @@
     </mat-card-content>
     <mat-card-actions class="example-button-row">
         <button mat-raised-button color="primary" type="button" (click)="onDelete()">Xóa sách</button>
-        <a mat-raised-button routerLink="/">Thoát</a>
+        <a mat-raised-button routerLink="/"><span class="material-icons">arrow_back_ios</span> Thoát</a>
     </mat-card-actions>
 </mat-card>

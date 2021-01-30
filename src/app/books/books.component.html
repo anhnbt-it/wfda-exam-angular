@@ -5,7 +5,8 @@
         </mat-card-title>
     </mat-card-header>
     <mat-card-actions>
-        <a mat-raised-button color="primary" routerLink="/books/new" class="float-right">Thêm sách mới</a>
+        <a mat-raised-button color="primary" routerLink="/books/new" class="float-right">
+            <span class="material-icons">add</span> Thêm sách mới</a>
     </mat-card-actions>
     <mat-card-content>
         <table mat-table [dataSource]="books" class="full-width">

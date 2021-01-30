@@ -1,5 +1,5 @@
 <form [formGroup]="bookForm" novalidate (ngSubmit)="onSubmit()">
-    <mat-card>
+    <mat-card class="container">
         <mat-card-header>
             <mat-card-title>Cập nhật sách</mat-card-title>
         </mat-card-header>
@@ -31,7 +31,7 @@
         </mat-card-content>
         <mat-card-actions class="example-button-row">
             <button [disabled]="bookForm.invalid" mat-raised-button color="primary" type="submit">Cập nhật</button>
-            <a mat-raised-button routerLink="/">Thoát</a>
+            <a mat-raised-button routerLink="/"><span class="material-icons">arrow_back_ios</span> Thoát</a>
         </mat-card-actions>
     </mat-card>
 </form>
