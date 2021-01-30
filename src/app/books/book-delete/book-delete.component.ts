@@ -1,8 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Book } from 'src/app/book';
 import { BookService } from 'src/app/book.service';
 
@@ -17,22 +15,31 @@ export class BookDeleteComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private location: Location,
     private bookService: BookService,
-    private http: HttpClient) { }
+  ) { }
 
   ngOnInit(): void {
-    // First get the product id from the current route.
-    const routeParams = this.route.snapshot.paramMap;
-    const bookIdFromRoute = Number(routeParams.get('id'));
-
-    // Find the product that correspond with the id provided in route.
-    this.book = this.bookService.getBooks().find((book: Book) => book.id === bookIdFromRoute);
+    this.getBook();
   }
 
-  onDelete(id: number): void {
-    this.http.delete<Book>('http://localhost:3000/books/' + id).subscribe((res: any) => {console.log(res)});
-    this.router.navigateByUrl("/");
+  getBook(): void {
+    const routeParams = this.route.snapshot.paramMap;
+    const bookIdFromRoute = Number(routeParams.get('id'));
+    this.bookService.getBook(bookIdFromRoute).subscribe(book => {
+      this.book = book,
+      console.log(book);
+    });
+  }
+
+  onDelete(): void {
+    if (this.book != undefined && this.book.id != undefined) {
+      this.bookService.deleteBook(this.book.id).subscribe(() => this.goBack());
+    }
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -21,26 +23,28 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import { BookListComponent } from './views/book-list/book-list.component';
-import { BookDetailComponent } from './views/book-detail/book-detail.component';
-import { BookNewComponent } from './views/book-new/book-new.component';
-import { BookDeleteComponent } from './views/book-delete/book-delete.component';
-import { BookEditComponent } from './views/book-edit/book-edit.component';
+import { BooksComponent } from './books/books.component';
+import { BookNewComponent } from './books/book-new/book-new.component';
+import { BookService } from './book.service';
+import { BookEditComponent } from './books/book-edit/book-edit.component';
+import { BookDeleteComponent } from './books/book-delete/book-delete.component';
+import { BookDetailComponent } from './books/book-detail/book-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookListComponent,
-    BookDetailComponent,
+    BooksComponent,
     BookNewComponent,
+    BookEditComponent,
     BookDeleteComponent,
-    BookEditComponent
+    BookDetailComponent
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -58,7 +62,7 @@ import { BookEditComponent } from './views/book-edit/book-edit.component';
     MatGridListModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

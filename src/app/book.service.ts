@@ -8,30 +8,26 @@ import { Book } from './book';
 })
 export class BookService {
 
-  books: Book[] = [];
-
   constructor(private http: HttpClient) {
   }
 
-  setBooks(books: Book[]) {
-    this.books = books;
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>('http://localhost:3000/books');
   }
 
-  getBooks(): Book[] {
-    console.log("Get book", this.books);
-    return this.books;
+  getBook(id: number): Observable<Book> {
+    return this.http.get<Book>('http://localhost:3000/books/' + id);
   }
 
-  onDelete(): void {
-    console.log("Xoa book");
+  deleteBook(id: number): Observable<Book> {
+    return this.http.delete<Book>('http://localhost:3000/books/' + id);
   }
 
   addBook(book: Book): Observable<Book> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      })
-    };
-    return this.http.post<Book>('http://localhost:3000/books', book, httpOptions);
+    return this.http.post<Book>('http://localhost:3000/books', book);
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<Book>('http://localhost:3000/books/' + book.id, book);
   }
 }

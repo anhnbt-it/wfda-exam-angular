@@ -1,14 +1,9 @@
 <form [formGroup]="bookForm" novalidate (ngSubmit)="onSubmit()">
     <mat-card>
         <mat-card-header>
-            <mat-card-title>Them sach moi</mat-card-title>
+            <mat-card-title>Cập nhật sách</mat-card-title>
         </mat-card-header>
-        <mat-card-content>
-            <div class="row">
-                <mat-form-field class="full-width" appearance="outline">
-                    <input matInput placeholder="ID" formControlName="id">
-                </mat-form-field>
-            </div>
+        <mat-card-content *ngIf="book !== undefined">
             <div class="row">
                 <mat-form-field class="full-width" appearance="outline">
                     <input matInput placeholder="Title" formControlName="title">
@@ -34,9 +29,9 @@
                 </mat-form-field>
             </div>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Them sach</button>
-            <a mat-raised-button routerLink="/">Thoat</a>
+        <mat-card-actions class="example-button-row">
+            <button mat-raised-button color="primary" type="submit">Cập nhật</button>
+            <a mat-raised-button routerLink="/">Thoát</a>
         </mat-card-actions>
     </mat-card>
 </form>

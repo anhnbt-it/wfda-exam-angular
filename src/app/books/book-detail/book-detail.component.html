@@ -3,7 +3,7 @@
         <mat-card-title>Chi tiet sach</mat-card-title>
         <mat-card-subtitle><a mat-raised-button color="primary" routerLink="/">Xem danh sach</a></mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content *ngIf="book !== undefined">
         <p>ID: {{ book.id }}</p>
         <p>Title: {{ book.title }}</p>
         <p>Author: {{ book.author }}</p>

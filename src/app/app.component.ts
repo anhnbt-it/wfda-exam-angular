@@ -1,7 +1,8 @@
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Book } from './book';
-import { BookService } from './book.service';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,11 @@ import { BookService } from './book.service';
 export class AppComponent {
   title = 'exam-angular';
 
-  constructor(
-  ) {
-  }
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }
