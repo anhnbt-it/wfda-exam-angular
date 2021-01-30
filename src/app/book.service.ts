@@ -8,26 +8,28 @@ import { Book } from './book';
 })
 export class BookService {
 
+  private readonly API_URL = 'http://localhost:3000/books';
+
   constructor(private http: HttpClient) {
   }
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>('http://localhost:3000/books');
+    return this.http.get<Book[]>(this.API_URL);
   }
 
   getBook(id: number): Observable<Book> {
-    return this.http.get<Book>('http://localhost:3000/books/' + id);
+    return this.http.get<Book>(`${this.API_URL}/${id}`);
   }
 
   deleteBook(id: number): Observable<Book> {
-    return this.http.delete<Book>('http://localhost:3000/books/' + id);
+    return this.http.delete<Book>(`${this.API_URL}/${id}`);
   }
 
   addBook(book: Book): Observable<Book> {
-    return this.http.post<Book>('http://localhost:3000/books', book);
+    return this.http.post<Book>(this.API_URL, book);
   }
 
   updateBook(book: Book): Observable<Book> {
-    return this.http.put<Book>('http://localhost:3000/books/' + book.id, book);
+    return this.http.put<Book>(`${this.API_URL}/${book.id}`, book);
   }
 }
